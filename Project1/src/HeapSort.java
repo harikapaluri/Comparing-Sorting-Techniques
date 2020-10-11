@@ -44,12 +44,13 @@ public class HeapSort {
     }
      static void printHeap(Vector<Integer> vector,int n) 
     { 
-        System.out.println("Array representation of Heap is:"); 
+        //System.out.println("Array representation of Heap is:"); 
   
         for (int i = 0; i < n; ++i) 
-            System.out.print(vector.get(i) + " "); 
-  
-        System.out.println(); 
+        { 
+        	//  System.out.print(vector.get(i) + " "); 
+        }
+        //System.out.println(); 
     }
     // main function to do heap sort 
 static Vector<Integer> heapSort(Vector<Integer> vector, int n) 
