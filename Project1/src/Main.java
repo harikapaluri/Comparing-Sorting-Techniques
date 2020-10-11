@@ -16,7 +16,7 @@ public class Main {
 		InsertionSort insort=new InsertionSort();
 		HeapSort hsort=new HeapSort();
 		Scanner sc=new Scanner(System.in);
-		//To run sorting algorithms on different algorthms
+		//To run sorting algorithms on different input sizes
 		int[] inputsize= {1000, 2000, 3000, 5000, 10000,20000,30000,40000, 50000};
       
 		//1.on random Inputs
