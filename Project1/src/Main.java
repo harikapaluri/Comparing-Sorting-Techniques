@@ -4,6 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class Main {
 		InsertionSort insort=new InsertionSort();
 		HeapSort hsort=new HeapSort();
 		Scanner sc=new Scanner(System.in);
-		//To run sorting algorithms on different algorthms
+		//To run sorting algorithms on different input sizes
 		int[] inputsize= {1000, 2000, 3000, 5000, 10000,20000,30000,40000, 50000};
       
 		//1.on random Inputs
@@ -24,10 +25,10 @@ public class Main {
 			 //Creating a random Integer Array
 			int n=inputsize[i];
 	        int[] arr=createArray(n);
-	        Integer[] arr2=createArray2(n);
+	        Integer[] arr2=createArrayForVector(n);
 	        
 	       //************************************Insertion Sort***************************************//
-	        	long elt=insort.insertionSort(arr);
+	        	long insortTime=insort.insertionSort(arr);
 	        	
 	        	//************************************Heap Sort***************************************//
 	        	
@@ -37,18 +38,27 @@ public class Main {
 	            //hsort.printHeap(vector,n);
 	           Vector<Integer> sorted =hsort.heapSort(vector,n);
 	           long stopTime = System.currentTimeMillis();
-	 	      long elapsedTime = stopTime - startTime;
+	 	      long hsortTime = stopTime - startTime;
 	           //hsort.printHeap(sorted,n);
 	        
 	 	   //**********************************************************************//
 	 	 //File related
 	 	     List<List<String>> rows = Arrays.asList(
-	 	    	    Arrays.asList("Randomn Insertion Sort",Integer.toString(n),Long.toString(elt)),
-	 	    	    Arrays.asList("Randomn Heap Sort",Integer.toString(n),Long.toString(elapsedTime)),
+	 	    	    Arrays.asList("Randomn Insertion Sort",Integer.toString(n),Long.toString(insortTime)),
+	 	    	    Arrays.asList("Randomn Heap Sort",Integer.toString(n),Long.toString(hsortTime)),
 	 	    	    Arrays.asList("Randomn Merge Sort", "editor", "Node.js")
 	 	    	);
-	 	     
-	 	    FileWriter csvWriter = new FileWriter("ExecutionTimes.csv");
+	 	     File file=new File("ExecutionTimes.csv");
+	 	    FileWriter csvWriter;
+	 	    if(file.exists()) {
+	 	    	csvWriter = new FileWriter(file,true);
+	 	    	for (List<String> rowData : rows) {
+	 	 	       csvWriter.append(String.join(",", rowData));
+	 	 	       csvWriter.append("\n");
+	 	 	   }
+	 	    }else {
+	 	    	 file.createNewFile();
+	 	    	csvWriter = new FileWriter(file);
 	 	   BufferedReader csvReader = new BufferedReader(new FileReader("ExecutionTimes.csv"));
 	 	   csvWriter.append("Sorting");
 	 	   csvWriter.append(",");
@@ -62,6 +72,7 @@ public class Main {
 	 	       csvWriter.append("\n");
 	 	   }
 
+	 	 }
 	 	   csvWriter.flush();
 	 	   csvWriter.close();
 		}
@@ -79,7 +90,7 @@ public class Main {
 		}
 		return arr;
 	}
-	public static Integer[] createArray2(int n) {
+	public static Integer[] createArrayForVector(int n) {
 		// TODO Auto-generated method stub
 		int max=100;
 		Random rand=new Random();
