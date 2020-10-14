@@ -1,72 +1,17 @@
-package project1_algos;
+
 
 import java.io.IOException;
 import java.util.*;
-import project1_algos.InsertionSort.*;
+
 
 public class ModQuickSort 
 {
-static int[] inputsize= {1000, 2000, 3000, 5000, 10000,20000,30000,40000, 50000};
-           // static int arr[] = {45,55,55,67,78,89,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,9,9,3,4,45,67,77,77,45,78,22,34,34};
-    public static void main(String[] args) throws IOException 
-    {
-            Scanner sc=new Scanner(System.in);
-           
-            int[] arr = new int[0];
-            for(int i=0;i<inputsize.length;i++)
-            {
-	int n=inputsize[i];
-	arr=createArray(n);
-	//Integer[] arr2=createArray2(n);
-                  if(inputsize[i]<=15)
-                  {
-                          long elt = InsertionSort.insertionSort(arr);
-                  }
-                 else
-                  {
-                      long elt=modQuickSort(arr);
-                  }
-           }
-           
             //printing the sorted array for each input size
-             for(int i=0;i<inputsize.length;i++)
-            {
-                System.out.println();
-                System.out.println();
-                System.out.println("For input size:" +inputsize[i]);
-                 for(int j=arr.length-1;j>=0;j--) 
-                {
-                    System.out.print(arr[j]+" ");
-                }
-            }
-            
-            
-     }
-        
-    public static int[] createArray(int n) 
-    {
-        int max=n;
-        Random rand=new Random();
-        int[] arr=new int[n];
-        for(int i=0;i<n;i++) 
-        {
-            arr[i]=rand.nextInt(max);
-        }
-        return arr;
-    }
-	
-    public static Integer[] createArray2(int n) 
-    {
-        // TODO Auto-generated method stub
-        int max=100;
-        Random rand=new Random();
-        Integer[] arr=new Integer[n];
-        for(int i=0;i<n;i++) 
-        {
-	arr[i]=rand.nextInt(max);
-        }
-        return arr;
-    }
+		/*
+		 * for(int i=0;i<inputsize.length;i++) { System.out.println();
+		 * System.out.println(); System.out.println("For input size:" +inputsize[i]);
+		 * for(int j=arr.length-1;j>=0;j--) { System.out.print(arr[j]+" "); } }
+		 */
     
     public static long modQuickSort(int arr[])
     {

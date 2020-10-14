@@ -3,62 +3,12 @@ import java.util.*;
 
 public class InPlaceQuickSort
 {
-    static int[] inputsize= {1000, 2000, 3000, 5000, 10000,20000,30000,40000, 50000};
-            
-    public static void main(String[] args) throws IOException 
+	public static long inPlaceQuickSort(int[] arr, int l, int r) 
     {
-            Scanner sc=new Scanner(System.in);
-            int[] arr = new int[0];
-            for(int i=0;i<inputsize.length;i++)
-            {
-	int n=inputsize[i];
-	arr=createArray(n);
-	Integer[] arr2=createArray2(n);
-                 long elt=inPlaceQuickSort(arr, 0, arr.length-1);
-            }
-           
-             for(int i=0;i<inputsize.length;i++)
-            {
-                System.out.println();
-                System.out.println();
-                System.out.println("For input size:" +inputsize[i]);
-                 for(int j=0;j<arr.length;j++) 
-                {
-                    System.out.print(arr[j]+" ");
-                }
-            }
-     }
-        
-    public static int[] createArray(int n) 
-    {
-        int max=n;
-        Random rand=new Random();
-        int[] arr=new int[n];
-        for(int i=0;i<n;i++) 
-        {
-            arr[i]=rand.nextInt(max);
-        }
-        return arr;
-    }
-	
-    public static Integer[] createArray2(int n) 
-    {
-        // TODO Auto-generated method stub
-        int max=100;
-        Random rand=new Random();
-        Integer[] arr=new Integer[n];
-        for(int i=0;i<n;i++) 
-        {
-	arr[i]=rand.nextInt(max);
-        }
-        return arr;
-    }
-    
-    public static long inPlaceQuickSort(int[] arr, int l, int r) 
-    {
+	 Random rand= new Random(); 
         long startTime = System.currentTimeMillis();
-        //int rnd = new Random().nextInt(arr.length-1);
-        int rnd = (l+r)/2;
+        int rnd =rand.nextInt(r-l)+l; 
+        //int rnd = (l+r)/2;
         int leftChk = l;
         int rightChk = r;
         int pivot = arr[rnd];
@@ -84,34 +34,17 @@ public class InPlaceQuickSort
               inPlaceQuickSort(arr, leftChk, r);
           if(l<rightChk)
                inPlaceQuickSort(arr, l, rightChk);
-            
-            
-            /*if(arr[l]>pivot && arr[r]<pivot)
-            {
-                long[] swappedEle = swap(arr[l],arr[r]);
-                arr[l]=swappedEle[0];
-                arr[r] = swappedEle[1];
-                l++;
-                r++;
-            }
-            else
-            {
-                l++;
-                r--;
-            }
-        }
-        if(l<pivot)
-        {
-            long[] swappedEle = swap(l,pivot);
-                l=swappedEle[0];
-                r = swappedEle[1];
-        }
-        }*/
+        
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
         
         return elapsedTime;
     }
+ public static void print(int[] arr) {
+	 for(int i=0;i<arr.length;i++) {
+		 System.out.print(" "+arr[i]);
+	 }
+ }
 }
     
 
