@@ -27,7 +27,7 @@ public class ModQuickSort
     private static final int CUTOFF = 15;
     private static void quicksortmed( int[] a, int first, int last ) 
     {
-        if( first + CUTOFF < last )
+        if( first + CUTOFF > last )
             insertionSort( a, first, last );
         else 
         {
