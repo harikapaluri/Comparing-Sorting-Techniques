@@ -15,7 +15,7 @@ import java.util.Random;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		 
+		MergeSort    mersort=new MergeSort();
 		InsertionSort insort=new InsertionSort();
 		HeapSort hsort=new HeapSort();
 		InPlaceQuickSort qsort=new InPlaceQuickSort();
@@ -91,8 +91,9 @@ case 2:{
 	 //******Randomn Array **********//
  	long startTime = System.currentTimeMillis();
      hsort.buildHeap(vector,size);
-     //hsort.printHeap(vector,n);
+     //hsort.printHeap(vector,size);
     Vector<Integer> randomn =hsort.heapSort(vector,size);
+    //hsort.printHeap(randomn,size);
     long stopTime = System.currentTimeMillis();
     long hsortRandTime = stopTime - startTime;
     //******Sorted Array **********//
@@ -101,18 +102,18 @@ case 2:{
 			long start2 = System.currentTimeMillis();
 		     hsort.buildHeap(vector1,size);
 		     //hsort.printHeap(vector,n);
-		    Vector<Integer> sorted =hsort.heapSort(vector,size);
+		    Vector<Integer> sorted =hsort.heapSort(vector1,size);
 		    long stop2 = System.currentTimeMillis();
-		    long hsortSortTime = start2 - stop2;
+		    long hsortSortTime = stop2 - start2;
 		  //******Reverse Array **********//
 			Arrays.sort(arr2,Collections.reverseOrder());
 			Vector<Integer> vector3 = new Vector<Integer>(Arrays.asList(arr2));
 			long start3 = System.currentTimeMillis();
 		     hsort.buildHeap(vector3,size);
 		     //hsort.printHeap(vector,n);
-		    Vector<Integer> reverse =hsort.heapSort(vector,size);
+		    Vector<Integer> reverse =hsort.heapSort(vector3,size);
 		    long stop3 = System.currentTimeMillis();
-		    long hsortReverseTime = start3 - stop3;
+		    long hsortReverseTime = stop3 - start3;
 
 			
 			//File related
@@ -197,10 +198,76 @@ case 3:{
 }
 case 4:{
 	
+	 int[] arr=createArray(size);		
+	 int[] arr1=Arrays.copyOf(arr,size);
+	
+	 	 int[] arr2=Arrays.copyOf(arr,size);
+	 	 
+	 //******Randomn Array **********//
+	 long startTime = System.currentTimeMillis();
+	 arr=mersort.partition(arr);
+       
+   long stopTime = System.currentTimeMillis();
+   long mersortRandTime = stopTime - startTime;
+   //******Sorted Array **********//
+			Arrays.sort(arr1);
+			
+			long start2 = System.currentTimeMillis();
+			 arr1=mersort.partition(arr1);
+		   
+		  
+		    long stop2 = System.currentTimeMillis();
+		    long mersortSortTime = stop2 - start2;
+		  //******Reverse Array **********//
+			arr2=reverse(arr2);
+			long start3 = System.currentTimeMillis();
+			 arr2=mersort.partition(arr2);
+		    long stop3 = System.currentTimeMillis();
+		    long mersortReverseTime = stop3 - start3;
+
+			
+			//File related
+List<List<String>> rows = Arrays.asList(
+Arrays.asList("Randomn Merge Sort",Integer.toString(size),Long.toString(mersortRandTime)),
+Arrays.asList("Sorted Merge Sort",Integer.toString(size),Long.toString(mersortSortTime)),
+Arrays.asList("Reverse Merge Sort", Integer.toString(size),Long.toString(mersortReverseTime))
+
+	 );
+File file=new File("OneByOneExecution.csv");
+FileWriter csvWriter;
+if(file.exists()) {
+csvWriter = new FileWriter(file,true);
+for (List<String> rowData : rows) {
+csvWriter.append(String.join(",", rowData));
+csvWriter.append("\n");
+}
+}else {
+file.createNewFile();
+csvWriter = new FileWriter(file);
+
+csvWriter.append("Sorting");
+csvWriter.append(",");
+csvWriter.append("Input Size");
+csvWriter.append(",");
+csvWriter.append("Time in ms");
+csvWriter.append("\n");
+
+for (List<String> rowData : rows) {
+csvWriter.append(String.join(",", rowData));
+csvWriter.append("\n");
+}
+
+}
+csvWriter.flush();
+csvWriter.close();
+break;
+	
+	
+	
 }
 case 5:{
 	int[] arr=createArray(size);
-	if(size==15) {
+	if(size<=15) {
 		long elt=insort.insertionSort(arr);
 		System.out.println("Since input size is less than 15 performed insertion sort in  "+elt+"ms");
 	}
@@ -256,10 +323,10 @@ case 5:{
 		}
 		}
        
-	/*** End of Main Class ***/
+	
 	public static int[] createArray(int n) {
-		// TODO Auto-generated method stub
-		int max=100;
+		//Creating an array of integer with random values
+		int max=n;
 		Random rand=new Random();
 		int[] arr=new int[n];
 		for(int i=0;i<n;i++) {
@@ -269,8 +336,8 @@ case 5:{
 		return arr;
 	}
 	public static Integer[] createArrayForVector(int n) {
-		// TODO Auto-generated method stub
-		int max=100;
+		
+		int max=n;
 		Random rand=new Random();
 		Integer[] arr=new Integer[n];
 		for(int i=0;i<n;i++) {
@@ -279,6 +346,7 @@ case 5:{
 		}
 		return arr;
 	}
+	//To reverse an array
 	public static int[] reverse(int[] input) {
 		int last = input.length - 1; 
 		int middle = input.length / 2;

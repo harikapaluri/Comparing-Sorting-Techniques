@@ -48,7 +48,7 @@ public class HeapSort {
   
         for (int i = 0; i < n; ++i) 
         { 
-        	//  System.out.print(vector.get(i) + " "); 
+        	  //System.out.print(vector.get(i) + " "); 
         }
         //System.out.println(); 
     }

@@ -16,6 +16,7 @@ public class RunAllAlgos {
 		HeapSort hsort=new HeapSort();
 		InPlaceQuickSort qsort=new InPlaceQuickSort();
 		ModQuickSort mqsort=new ModQuickSort();
+		MergeSort    mersort=new MergeSort();
 		//To run sorting algorithms on different input sizes
 				int[] inputsize= {1000, 2000, 3000, 5000, 10000,20000,30000,40000, 50000};
 		      
@@ -43,21 +44,24 @@ public class RunAllAlgos {
 			 	   //****************************IN-PLACE QUick Sort*************************************//
 			 	     long qsortTime=qsort.inPlaceQuickSort(arr, 0, arr.length-1);
 			 	    //****************************Mod  Quick Sort*************************************//
-			 	   /* if(inputsize[i]<=15)
-		            {
-		                    long elt = insort.insertionSort(arr);
-		            }*/
-		           //else
-		            //{
+			 	        
 		                long mqsortTime=mqsort.modQuickSort(arr);
-		            //} 
+		            
+		                
+		                //***************Merge Sort**********************//
+		                long start = System.currentTimeMillis();
+		                arr=mersort.partition(arr);
+		                long stop = System.currentTimeMillis();
+				 	      long mersortTime = stop - start;
+		                
 		                //*******************************************************************//
 			 	     //File related
 			 	     List<List<String>> rows = Arrays.asList(
 			 	    	    Arrays.asList("Randomn Insertion Sort",Integer.toString(n),Long.toString(insortTime)),
 			 	    	    Arrays.asList("Randomn Heap Sort",Integer.toString(n),Long.toString(hsortTime)),
 			 	    	    Arrays.asList("Randomn Quick Sort", Integer.toString(n),Long.toString(qsortTime)),
-			 	    	   Arrays.asList("Randomn Modified Quick Sort", Integer.toString(n),Long.toString(mqsortTime))
+			 	    	   Arrays.asList("Randomn Modified Quick Sort", Integer.toString(n),Long.toString(mqsortTime)),
+			 	    	  Arrays.asList("Random Merge Sort", Integer.toString(n),Long.toString(mersortTime))
 			 	    		 );
 			 	     File file=new File("ExecutionTimes.csv");
 			 	    FileWriter csvWriter;
@@ -119,21 +123,25 @@ public class RunAllAlgos {
 					 	   //****************************IN-PLACE QUick Sort*************************************//
 					 	     long qsortTime=qsort.inPlaceQuickSort(arr, 0, arr.length-1);
 					 	    //****************************Mod  Quick Sort*************************************//
-					 	   /* if(inputsize[i]<=15)
-				            {
-				                    long elt = insort.insertionSort(arr);
-				            }*/
-				           //else
-				            //{
+					 	   
 				                long mqsortTime=mqsort.modQuickSort(arr);
-				            //} 
-				                //*******************************************************************//
-					 	     //File related
+				           
+				                //*******************Merge Sort ********************************//
+					 	    
+				               
+				               
+				                long start = System.currentTimeMillis();
+				                arr=mersort.partition(arr);
+				                long stop = System.currentTimeMillis();
+						 	      long mersortTime = stop - start;
+						 	     //*********************************************************//
+				                //File related
 					 	     List<List<String>> rows = Arrays.asList(
 					 	    	    Arrays.asList("Sorted Insertion Sort",Integer.toString(n),Long.toString(insortTime)),
 					 	    	    Arrays.asList("Sorted Heap Sort",Integer.toString(n),Long.toString(hsortTime)),
 					 	    	    Arrays.asList("Sorted Quick Sort", Integer.toString(n),Long.toString(qsortTime)),
-					 	    	   Arrays.asList("Sorted Modified Quick Sort", Integer.toString(n),Long.toString(mqsortTime))
+					 	    	   Arrays.asList("Sorted Modified Quick Sort", Integer.toString(n),Long.toString(mqsortTime)),
+					 	    	  Arrays.asList("Sorted Merge Sort", Integer.toString(n),Long.toString(mersortTime))
 					 	    		 );
 					 	     File file=new File("ExecutionTimes.csv");
 					 	    FileWriter csvWriter;
@@ -192,21 +200,25 @@ public class RunAllAlgos {
 					 	   //****************************IN-PLACE QUick Sort*************************************//
 					 	     long qsortTime=qsort.inPlaceQuickSort(arr, 0, arr.length-1);
 					 	    //****************************Mod  Quick Sort*************************************//
-					 	   /* if(inputsize[i]<=15)
-				            {
-				                    long elt = insort.insertionSort(arr);
-				            }*/
-				           //else
-				            //{
+					 	   
+				            
 				                long mqsortTime=mqsort.modQuickSort(arr);
-				            //} 
+				             
+				                //********************Merge Sort*********************************//
+				               
+				                long start = System.currentTimeMillis();
+				                arr=mersort.partition(arr);
+				                long stop = System.currentTimeMillis();
+						 	      long mersortTime = stop - start;
 				                //*******************************************************************//
-					 	     //File related
+				                
+				                //File related
 					 	     List<List<String>> rows = Arrays.asList(
 					 	    	    Arrays.asList("Reverse Insertion Sort",Integer.toString(n),Long.toString(insortTime)),
 					 	    	    Arrays.asList("Reverse Heap Sort",Integer.toString(n),Long.toString(hsortTime)),
 					 	    	    Arrays.asList("Reverse Quick Sort", Integer.toString(n),Long.toString(qsortTime)),
-					 	    	   Arrays.asList("Reverse Modified Quick Sort", Integer.toString(n),Long.toString(mqsortTime))
+					 	    	   Arrays.asList("Reverse Modified Quick Sort", Integer.toString(n),Long.toString(mqsortTime)),
+					 	    	  Arrays.asList("Reverse Merge Sort", Integer.toString(n),Long.toString(mersortTime))	
 					 	    		 );
 					 	     File file=new File("ExecutionTimes.csv");
 					 	    FileWriter csvWriter;
@@ -239,7 +251,7 @@ public class RunAllAlgos {
 	}
 	public static int[] createArray(int n) {
 		// TODO Auto-generated method stub
-		int max=100;
+		int max=n;
 		Random rand=new Random();
 		int[] arr=new int[n];
 		for(int i=0;i<n;i++) {
@@ -250,7 +262,7 @@ public class RunAllAlgos {
 	}
 	public static Integer[] createArrayForVector(int n) {
 		// TODO Auto-generated method stub
-		int max=100;
+		int max=n;
 		Random rand=new Random();
 		Integer[] arr=new Integer[n];
 		for(int i=0;i<n;i++) {
