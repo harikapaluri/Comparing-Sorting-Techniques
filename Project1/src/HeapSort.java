@@ -30,7 +30,7 @@ public class HeapSort {
         } 
     } 
     // Function to build a Max-Heap from the Array 
-    static void buildHeap(Vector<Integer> vector, int n) 
+    static Vector<Integer> buildHeap(Vector<Integer> vector, int n) 
     { 
         // Index of last non-leaf node 
         int startIdx = (n / 2) - 1; 
@@ -41,16 +41,18 @@ public class HeapSort {
         for (int i = startIdx; i >= 0; i--) { 
             heapify(vector, n, i); 
         } 
+    return vector;
     }
      static void printHeap(Vector<Integer> vector,int n) 
     { 
-        //System.out.println("Array representation of Heap is:"); 
+        
   
         for (int i = 0; i < n; ++i) 
         { 
-        	  //System.out.print(vector.get(i) + " "); 
+        	//System.out.println(" Input Array value before building Heap ");
+        	  System.out.print(vector.get(i) + " "); 
         }
-        //System.out.println(); 
+       System.out.println(); 
     }
     // main function to do heap sort 
 static Vector<Integer> heapSort(Vector<Integer> vector, int n) 
