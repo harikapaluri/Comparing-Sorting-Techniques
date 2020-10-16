@@ -17,6 +17,7 @@ public class ModQuickSort
     {
         long startTime = System.currentTimeMillis();
         quicksortmed( arr, 0, arr.length - 1 );
+        arr=reverse(arr);
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
         
@@ -81,5 +82,13 @@ public class ModQuickSort
                   a[ index1 ] = a[ index2 ];
 	a[ index2 ] = tmp;
         }
-
+      //To reverse an array
+    	public static int[] reverse(int[] input) {
+    		int last = input.length - 1; 
+    		int middle = input.length / 2;
+    		for (int i = 0; i <= middle; i++) {
+    			int temp = input[i]; input[i] = input[last - i];
+    			input[last - i] = temp; }
+    	return input;	
+    	}
 }
