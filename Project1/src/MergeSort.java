@@ -9,39 +9,43 @@
 	     public static int[] merge(int[] left, int[] right) 
 	    {
 	            int n = left.length + right.length;
-	            int[] B = new int[n];
+	            int[] newArray = new int[n];
 	            int i = 0, j = 0, k = 0;
 	            while (i < left.length || j < right.length)
 	            {
-		if (i < left.length && j < right.length) 
-		{
+			if (i < left.length && j < right.length) 
+			{
+				// if left is less than or equal to right then add the left value in the array
 	                        if (left[i] <= right[j]) 
 	                        {
-	                            B[k] = left[i];
+	                            newArray[k] = left[i];
 	                            i++;
 	                            k++;
 	                        } 
+				// else add the right value
 	                        else 
 	                        {
-	                            B[k] = right[j];
+	                            newArray[k] = right[j];
 	                            j++;
 	                            k++;
 	                        }
-		} 
-		else if (i < left.length) 
-		{
-	                        B[k] = left[i];
+			} 
+			//if the right side array is over and only left remains then add all its elements in the array
+			else if (i < left.length) 
+			{
+	                        newArray[k] = left[i];
 	                        i++;
 	                        k++;
-		} 
-		else if (j < right.length) 
-		{
-	                        B[k] = right[j];
+			} 
+			// if the left array is over and only right remains then add all its elements in the array
+			else if (j < right.length) 
+			{
+	                        newArray[k] = right[j];
 	                        j++;
 	                        k++;
-		}
+			}
 	            }
-		return B;
+		return newArray;
 	          }
 
 	    public static int[] partition(int[] A)
@@ -52,6 +56,7 @@
 	        {
 	    	return A;
 	        }
+		// partition the array in two halves
 	        int[] right;
 	        mid = A.length / 2;
 	        int[] left = new int[mid];
@@ -64,10 +69,12 @@
 		right = new int[mid + 1];
 	        }
 
+		// add the first half array in left array
 	        for (int i = 0; i < mid; i++) 
 	        {
 		left[i] = A[i];
 	        }
+		// add the second half in the right array
 	        int x = 0;
 	        for (int k = mid; k < A.length; k++) 
 	        {
