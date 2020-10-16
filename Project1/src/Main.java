@@ -47,7 +47,7 @@ public class Main {
 					print(arr);
 					System.out.println();
 					System.out.println("Time for sorting = "+insortRandTime);
-					Arrays.sort(arr);
+					
 					
 					long insortSortedTime=insort.insertionSort(arr);
 					System.out.println("Time when input array is sorted = "+insortSortedTime);
@@ -186,7 +186,7 @@ case 3:{
 	print(arr);
 	System.out.println();
 	System.out.println("Time for sorting = "+qsortRandTime);
-	Arrays.sort(arr);
+	
 	long qsortSortTime=qsort.inPlaceQuickSort(arr, 0, size-1);
 	System.out.println("Time when input array is sorted = "+qsortSortTime);
 	arr=reverse(arr);
