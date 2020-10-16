@@ -34,7 +34,7 @@ public class RunAllAlgos {
 			        	
 			        	Vector<Integer> vector = new Vector<Integer>(Arrays.asList(arr2));
 			        	long startTime = System.currentTimeMillis();
-			            hsort.buildHeap(vector,n);
+			            vector=hsort.buildHeap(vector,n);
 			            //hsort.printHeap(vector,n);
 			           Vector<Integer> sorted =hsort.heapSort(vector,n);
 			           long stopTime = System.currentTimeMillis();
@@ -113,7 +113,7 @@ public class RunAllAlgos {
 					        	
 					        	Vector<Integer> vector = new Vector<Integer>(Arrays.asList(arr2));
 					        	long startTime = System.currentTimeMillis();
-					            hsort.buildHeap(vector,n);
+					            vector=hsort.buildHeap(vector,n);
 					            //hsort.printHeap(vector,n);
 					           Vector<Integer> sorted =hsort.heapSort(vector,n);
 					           long stopTime = System.currentTimeMillis();
@@ -190,7 +190,7 @@ public class RunAllAlgos {
 					        	
 					        	Vector<Integer> vector = new Vector<Integer>(Arrays.asList(arr2));
 					        	long startTime = System.currentTimeMillis();
-					            hsort.buildHeap(vector,n);
+					            vector=hsort.buildHeap(vector,n);
 					            //hsort.printHeap(vector,n);
 					           Vector<Integer> sorted =hsort.heapSort(vector,n);
 					           long stopTime = System.currentTimeMillis();
@@ -248,6 +248,7 @@ public class RunAllAlgos {
 					 	   csvWriter.flush();
 					 	   csvWriter.close();
 						}	
+	System.out.println("Please view ExecutionTimes.csv in your file folder for all the run times");
 	}
 	public static int[] createArray(int n) {
 		// TODO Auto-generated method stub
