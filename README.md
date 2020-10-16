@@ -17,5 +17,6 @@ Steps to run the code:
 6. The report shows the execution results of comparing sorting algorithm with the help of line graphs.
 
 Note: 
- 1.Please make sure to close the respective .csv file while running its code. If the .csv file is kept open since two process are acessing the file at the same time it will     through an exception.
- 2.If you want to run  the python notebook for graphs please make sure that you have generated an ExecutionTimes.csv from Running the java by running the Main program option 1.
+
+1. Please make sure to close the respective .csv file while running its code. If the .csv file is kept open since two process are acessing the file at the same time it will     through an exception.
+2. If you want to run  the python notebook for graphs please make sure that you have generated an ExecutionTimes.csv from  by running the Main program option 1.
