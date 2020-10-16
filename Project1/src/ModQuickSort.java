@@ -24,7 +24,7 @@ public class ModQuickSort
         return elapsedTime;
     }
     
-
+    // If the inputsize is less then 15 then insertion sort else quick sort
     private static final int CUTOFF = 15;
     private static void quicksortmed( int[] a, int first, int last ) 
     {
@@ -32,7 +32,7 @@ public class ModQuickSort
             insertionSort( a, first, last );
         else 
         {
-	// Sort low, middle, high
+	// Sorting the low, middle, high
 	int middle = ( first + last ) / 2;
 	if( a[ middle ]> a[ first ] )
                         swap( a, first, middle );
@@ -41,10 +41,11 @@ public class ModQuickSort
 	if( a[last ]> a[ middle ]  )
                         swap( a, middle, last );
 
-	// Place pivot at position high - 1
+	// Placing the pivot at position -> high - 1
 	swap( a, middle, last - 1 );
 	int pivot = a[ last - 1 ];
-
+	
+	// if the value is less than the pivot then move it towards left else move right
 	int i, j;
 	for( i = first, j = last - 1; ; ) 
                  {
@@ -64,6 +65,7 @@ public class ModQuickSort
 	}
         }
 
+	// Perform insertionSort by taking the inputs of array, low and high indexes
         private static void insertionSort( int [ ] a, int low, int high ) 
         {
             for (int p = low + 1; p <= high; p++) 
@@ -76,13 +78,15 @@ public class ModQuickSort
             }
         }
 
+	//swap the numbers
         public static final void swap( int [ ] a, int index1, int index2 ) 
         {
 	int tmp = a[ index1 ];
                   a[ index1 ] = a[ index2 ];
 	a[ index2 ] = tmp;
         }
-      //To reverse an array
+	
+      	//To reverse an array
     	public static int[] reverse(int[] input) {
     		int last = input.length - 1; 
     		int middle = input.length / 2;
