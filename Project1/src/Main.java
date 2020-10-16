@@ -38,16 +38,24 @@ public class Main {
 			switch(algoch){
 				case 1:{
 					int[] arr=createArray(size);
+					System.out.println("Insertion Sort");
+					System.out.println("Input Array n = "+size);
+                    print(arr);
+                    System.out.println();
 					long insortRandTime=insort.insertionSort(arr);
+					System.out.println("Sorted");
+					print(arr);
+					System.out.println();
+					System.out.println("Time for sorting = "+insortRandTime);
 					Arrays.sort(arr);
 					
-					print(arr);
 					long insortSortedTime=insort.insertionSort(arr);
+					System.out.println("Time when input array is sorted = "+insortSortedTime);
 					arr=reverse(arr);
 					
-					//print(arr);
+					
 					long insortReverseTime=insort.insertionSort(arr);
-									
+					System.out.println("Time when input array is reverse="+insortReverseTime);				
 										//File related
 			 	     List<List<String>> rows = Arrays.asList(
 			 	    	    Arrays.asList("Randomn Insertion Sort",Integer.toString(size),Long.toString(insortRandTime)),
@@ -88,33 +96,47 @@ case 2:{
 
 	 Integer[] arr2=createArrayForVector(size);		
 	 Vector<Integer> vector = new Vector<Integer>(Arrays.asList(arr2));
+	 
+	 System.out.println("Heap Sort");
+		System.out.println("Input Array n = "+size);
+		System.out.print("Input Array ");
+		hsort.printHeap(vector, size);
 	 //******Randomn Array **********//
+	
  	long startTime = System.currentTimeMillis();
-     hsort.buildHeap(vector,size);
-     //hsort.printHeap(vector,size);
+ 	 
+    vector=hsort.buildHeap(vector,size);
+     System.out.print("Max Heap after building");
+     hsort.printHeap(vector,size);
     Vector<Integer> randomn =hsort.heapSort(vector,size);
-    //hsort.printHeap(randomn,size);
+    //
     long stopTime = System.currentTimeMillis();
     long hsortRandTime = stopTime - startTime;
+    System.out.print("Sorted Array ");
+	hsort.printHeap(randomn, size);
+    System.out.println("Time for sorting = "+hsortRandTime);
     //******Sorted Array **********//
 			Arrays.sort(arr2);
 			Vector<Integer> vector1 = new Vector<Integer>(Arrays.asList(arr2));
+			
 			long start2 = System.currentTimeMillis();
-		     hsort.buildHeap(vector1,size);
-		     //hsort.printHeap(vector,n);
+		     vector1=hsort.buildHeap(vector1,size);
+		    
 		    Vector<Integer> sorted =hsort.heapSort(vector1,size);
 		    long stop2 = System.currentTimeMillis();
 		    long hsortSortTime = stop2 - start2;
+		    System.out.println("Time when input array is sorted = "+hsortSortTime);
 		  //******Reverse Array **********//
 			Arrays.sort(arr2,Collections.reverseOrder());
 			Vector<Integer> vector3 = new Vector<Integer>(Arrays.asList(arr2));
+			
 			long start3 = System.currentTimeMillis();
-		     hsort.buildHeap(vector3,size);
-		     //hsort.printHeap(vector,n);
+			vector3=hsort.buildHeap(vector3,size);
+		    
 		    Vector<Integer> reverse =hsort.heapSort(vector3,size);
 		    long stop3 = System.currentTimeMillis();
 		    long hsortReverseTime = stop3 - start3;
-
+		    System.out.println("Time when input array is  reverse = "+hsortReverseTime);
 			
 			//File related
 List<List<String>> rows = Arrays.asList(
@@ -153,12 +175,23 @@ csvWriter.flush();
 break;
 }
 case 3:{
+	System.out.println("In_Place Quick Sort");
+	System.out.println("Input Array n = "+size);
+	System.out.println("Input Array ");
 	int[] arr=createArray(size);
+	print(arr);
+	System.out.println();
 	long qsortRandTime=qsort.inPlaceQuickSort(arr, 0, size-1);
+	System.out.print("Sorted ");
+	print(arr);
+	System.out.println();
+	System.out.println("Time for sorting = "+qsortRandTime);
 	Arrays.sort(arr);
 	long qsortSortTime=qsort.inPlaceQuickSort(arr, 0, size-1);
+	System.out.println("Time when input array is sorted = "+qsortSortTime);
 	arr=reverse(arr);
 	long qsortReverseTime=qsort.inPlaceQuickSort(arr, 0, size-1);
+	System.out.println("Time when input array is reverse = "+qsortReverseTime);
 					
 						//File related
 	     List<List<String>> rows = Arrays.asList(
@@ -197,8 +230,12 @@ case 3:{
 	    break;
 }
 case 4:{
-	
-	 int[] arr=createArray(size);		
+	System.out.println("Merge Sort");
+	System.out.println("Input Array n = "+size);
+	System.out.println("Input Array ");
+	 int[] arr=createArray(size);
+	 print(arr);
+	 System.out.println(" ");
 	 int[] arr1=Arrays.copyOf(arr,size);
 	
 	 	 int[] arr2=Arrays.copyOf(arr,size);
@@ -206,9 +243,14 @@ case 4:{
 	 //******Randomn Array **********//
 	 long startTime = System.currentTimeMillis();
 	 arr=mersort.partition(arr);
-       
+	
+	
    long stopTime = System.currentTimeMillis();
    long mersortRandTime = stopTime - startTime;
+   System.out.println("Sorted ");
+   print(arr);
+   System.out.println(" ");
+   System.out.println("Time for sorting = "+mersortRandTime);
    //******Sorted Array **********//
 			Arrays.sort(arr1);
 			
@@ -218,13 +260,15 @@ case 4:{
 		  
 		    long stop2 = System.currentTimeMillis();
 		    long mersortSortTime = stop2 - start2;
+		    System.out.println("Time when input array is sorted = "+mersortSortTime);
 		  //******Reverse Array **********//
+		    Arrays.sort(arr2);
 			arr2=reverse(arr2);
 			long start3 = System.currentTimeMillis();
 			 arr2=mersort.partition(arr2);
 		    long stop3 = System.currentTimeMillis();
 		    long mersortReverseTime = stop3 - start3;
-
+		    System.out.println("Time when input array is reverse = "+mersortReverseTime);
 			
 			//File related
 List<List<String>> rows = Arrays.asList(
@@ -267,15 +311,30 @@ break;
 }
 case 5:{
 	int[] arr=createArray(size);
+	System.out.println("Modified Quick Sort");
+	System.out.println("Input Array n = "+size);
+	System.out.println("Input Array  = ");
+    print(arr);
+    System.out.println("");
 	if(size<=15) {
 		long elt=insort.insertionSort(arr);
-		System.out.println("Since input size is less than 15 performed insertion sort in  "+elt+"ms");
+		System.out.println("Sorted array  = ");
+		print(arr);
+		System.out.println("");
+		System.out.println("Since input size is less than 15 performed insertion sort in  "+elt+" ms");
 	}
-	else{long mqsortRandTime=mqsort.modQuickSort(arr);
+	else{
+		long mqsortRandTime=mqsort.modQuickSort(arr);
+		System.out.println("Sorted array  = ");
+		print(arr);
+		System.out.println("");
+		 System.out.println("Time for sorting = "+mqsortRandTime);
 	Arrays.sort(arr);
 	long mqsortSortTime=mqsort.modQuickSort(arr);
+	 System.out.println("Time when input array is  sorted = "+mqsortSortTime);
 	arr=reverse(arr);
 	long mqsortReverseTime=mqsort.modQuickSort(arr);
+	System.out.println("Time when input array is  reverse = "+mqsortReverseTime);
 	
 	//File related
     List<List<String>> rows = Arrays.asList(
@@ -319,6 +378,8 @@ case 5:{
 }
 			}
 		
+			System.out.println("Please view OneByOneExecution.csv in your file folder for all the run times");
+		break;
 		}
 		}
 		}
