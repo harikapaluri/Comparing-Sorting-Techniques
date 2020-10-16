@@ -15,3 +15,5 @@ Steps to run the code:
 	          v) Modified Quicksort
 5. After receiving these execution times from the respective .csv files, the graph is plotted using Python.
 6. The report shows the execution results of comparing sorting algorithm with the help of line graphs.
+
+Note: Please make sure to close the respective .csv file while running its code. If the .csv file is kept open and then try to run the program then it will throw an Exception.
