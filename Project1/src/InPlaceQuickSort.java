@@ -7,6 +7,7 @@ public class InPlaceQuickSort
     {
 	 Random rand= new Random(); 
         long startTime = System.currentTimeMillis();
+	//generating any random number's index as the pivot's index
         int rnd =rand.nextInt(r-l)+l; 
         //int rnd = (l+r)/2;
         int leftChk = l;
@@ -15,6 +16,7 @@ public class InPlaceQuickSort
         int left = arr[0];
         int right = arr[arr.length-1];
     
+	// check if the value is less than the pivot then shift left else shift right
         while(l<=r)
         {
             while(arr[l]<pivot)
@@ -40,11 +42,7 @@ public class InPlaceQuickSort
         
         return elapsedTime;
     }
- public static void print(int[] arr) {
-	 for(int i=0;i<arr.length;i++) {
-		 System.out.print(" "+arr[i]);
-	 }
- }
+
 }
     
 
