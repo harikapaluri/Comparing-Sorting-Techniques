@@ -1,4 +1,4 @@
-# Project1
+# Comparing Various Sorting Techniques
 
 Steps to run the code:
 
