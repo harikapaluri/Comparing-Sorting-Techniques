@@ -19,4 +19,4 @@ Steps to run the code:
 Note: 
 
 1. Please make sure to close the respective .csv file while running its code. If the .csv file is kept open since two processes are acessing the file at the same time it will     throw an exception.
-2. If you want to run  the python notebook for graphs please make sure that you have generated an ExecutionTimes.csv from  by running the Main program option 1.
+2. If you want to run  the jupyter notebook for graphs please make sure that you have generated an ExecutionTimes.csv from  by running the Main program option 1.
